@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#FFB74D">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Bé Học Vui">
+    <title>Bé Học Vui</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="icon.svg">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="lop1.css">
+</head>
+<body>
+
+    <!-- MÀN HÌNH CHÀO -->
+    <section id="screen-start" class="screen active" data-testid="screen-start">
+        <div class="start-box">
+            <div class="start-sun">🌞</div>
+            <h1 class="start-title">Bé Học Vui</h1>
+            <p class="start-sub">Cùng học con vật, màu sắc, số đếm và chữ cái</p>
+            <button id="btn-start" class="btn-big btn-play-big" data-testid="btn-start">▶ Bắt đầu</button>
+        </div>
+    </section>
+
+    <!-- TRANG CHỦ: CHỌN CHỦ ĐỀ -->
+    <section id="screen-home" class="screen" data-testid="screen-home">
+        <header class="topbar">
+            <div class="flower-badge" data-testid="badge-flowers">🌸 <span id="flower-count">0</span></div>
+            <h1 class="topbar-title">Bé học gì hôm nay?</h1>
+            <button id="btn-parent" class="btn-icon" data-testid="btn-parent" aria-label="Khu bố mẹ">⚙️</button>
+        </header>
+        <div id="topic-grid" class="topic-grid" data-testid="grid-topics"></div>
+    </section>
+
+    <!-- CHỌN HỌC HAY CHƠI -->
+    <section id="screen-topic" class="screen" data-testid="screen-topic">
+        <header class="topbar">
+            <button class="btn-icon btn-back" data-back="home" data-testid="btn-topic-back" aria-label="Quay lại">⬅️</button>
+            <h1 class="topbar-title" id="topic-title">Chủ đề</h1>
+            <span class="topbar-space"></span>
+        </header>
+        <div class="topic-choose">
+            <div id="topic-big-icon" class="topic-big-icon">🐶</div>
+            <div class="mode-buttons">
+                <button id="btn-mode-learn" class="btn-mode btn-mode-learn" data-testid="btn-mode-learn">
+                    <span class="mode-emoji">📖</span><span>Học</span>
+                </button>
+                <button id="btn-mode-play" class="btn-mode btn-mode-play" data-testid="btn-mode-play">
+                    <span class="mode-emoji">🎮</span><span>Chơi</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHẾ ĐỘ HỌC -->
+    <section id="screen-learn" class="screen" data-testid="screen-learn">
+        <header class="topbar">
+            <button class="btn-icon btn-back" data-back="topic" data-testid="btn-learn-back" aria-label="Quay lại">⬅️</button>
+            <h1 class="topbar-title"><span id="learn-pos">1</span> / <span id="learn-total">1</span></h1>
+            <button id="btn-learn-speak" class="btn-icon" data-testid="btn-learn-speak" aria-label="Nghe lại">🔊</button>
+        </header>
+        <div class="learn-area">
+            <button id="btn-learn-prev" class="btn-arrow" data-testid="btn-learn-prev" aria-label="Trước">◀</button>
+            <div id="learn-card" class="learn-card" data-testid="card-learn">
+                <div id="learn-visual" class="learn-visual"></div>
+                <div id="learn-name" class="learn-name"></div>
+            </div>
+            <button id="btn-learn-next" class="btn-arrow" data-testid="btn-learn-next" aria-label="Tiếp">▶</button>
+        </div>
+        <p class="hint-text">Chạm vào hình để nghe lại</p>
+    </section>
+
+    <!-- CHẾ ĐỘ CHƠI -->
+    <section id="screen-play" class="screen" data-testid="screen-play">
+        <header class="topbar">
+            <button class="btn-icon btn-back" data-back="topic" data-testid="btn-play-back" aria-label="Quay lại">⬅️</button>
+            <div id="play-progress" class="play-progress" data-testid="progress-play"></div>
+            <span class="topbar-space"></span>
+        </header>
+        <button id="play-prompt" class="play-prompt" data-testid="btn-play-prompt">
+            <span class="prompt-speaker">🔊</span>
+            <span id="play-prompt-text">Con hãy chạm vào…</span>
+        </button>
+        <div id="play-options" class="play-options" data-testid="grid-play-options"></div>
+    </section>
+
+    <!-- LỚP 1: DANH SÁCH BÀI -->
+    <section id="screen-l1-lessons" class="screen" data-testid="screen-l1-lessons">
+        <header class="topbar">
+            <button class="btn-icon btn-back" data-back="home" data-testid="btn-l1-lessons-back" aria-label="Quay lại">⬅️</button>
+            <h1 class="topbar-title">Tiếng Việt lớp 1</h1>
+            <span class="topbar-space"></span>
+        </header>
+        <div id="l1-lesson-list" class="l1-lesson-list" data-testid="list-l1-lessons"></div>
+    </section>
+
+    <!-- LỚP 1: HỌC ÂM, DẤU, ĐÁNH VẦN -->
+    <section id="screen-l1-learn" class="screen" data-testid="screen-l1-learn">
+        <header class="topbar">
+            <button class="btn-icon btn-back" data-back="topic" data-testid="btn-l1-learn-back" aria-label="Quay lại">⬅️</button>
+            <h1 class="topbar-title"><span id="l1-pos">1</span> / <span id="l1-total">1</span></h1>
+            <button id="btn-l1-speak" class="btn-icon" data-testid="btn-l1-speak" aria-label="Nghe lại">🔊</button>
+        </header>
+        <div class="learn-area">
+            <button id="btn-l1-prev" class="btn-arrow" data-testid="btn-l1-prev" aria-label="Trước">◀</button>
+            <div id="l1-card" class="learn-card l1-card" data-testid="card-l1-learn">
+                <div id="l1-pic" class="l1-pic"></div>
+                <div id="l1-big" class="l1-big"></div>
+                <div id="l1-sub" class="l1-sub"></div>
+                <div id="l1-steps" class="l1-steps" data-testid="box-l1-steps"></div>
+            </div>
+            <button id="btn-l1-next" class="btn-arrow" data-testid="btn-l1-next" aria-label="Tiếp">▶</button>
+        </div>
+        <p class="hint-text">Chạm vào thẻ để nghe đánh vần lại</p>
+    </section>
+
+    <!-- KẾT QUẢ -->
+    <section id="screen-result" class="screen" data-testid="screen-result">
+        <div class="result-box">
+            <div class="result-trophy">🏆</div>
+            <h1 class="result-title">Bé giỏi quá!</h1>
+            <p class="result-text">Con nhận được <b id="result-flowers">0</b> bông hoa</p>
+            <div id="result-garden" class="result-garden" data-testid="result-garden"></div>
+            <div class="result-buttons">
+                <button id="btn-result-again" class="btn-big btn-green" data-testid="btn-result-again">🔁 Chơi tiếp</button>
+                <button id="btn-result-home" class="btn-big btn-blue" data-testid="btn-result-home">🏠 Về trang chủ</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- KHU BỐ MẸ -->
+    <section id="screen-parent" class="screen screen-parent" data-testid="screen-parent">
+        <header class="topbar topbar-parent">
+            <button class="btn-icon btn-back" data-back="home" data-testid="btn-parent-back" aria-label="Quay lại">⬅️</button>
+            <h1 class="topbar-title">Khu bố mẹ</h1>
+            <span class="topbar-space"></span>
+        </header>
+        <div class="parent-body">
+
+            <div class="panel">
+                <h2>Cách chơi</h2>
+                <label class="row">Số câu mỗi lượt
+                    <select id="set-rounds" data-testid="select-rounds">
+                        <option value="5">5 câu</option>
+                        <option value="8">8 câu</option>
+                        <option value="10">10 câu</option>
+                    </select>
+                </label>
+                <label class="row">Số hình để chọn
+                    <select id="set-options" data-testid="select-options">
+                        <option value="2">2 hình (dễ)</option>
+                        <option value="3">3 hình</option>
+                        <option value="4">4 hình (khó)</option>
+                    </select>
+                </label>
+                <label class="row">Tốc độ đọc
+                    <select id="set-rate" data-testid="select-rate">
+                        <option value="0.75">Chậm</option>
+                        <option value="0.9">Vừa</option>
+                        <option value="1.05">Nhanh</option>
+                    </select>
+                </label>
+                <label class="row">Đọc câu hướng dẫn
+                    <input type="checkbox" id="set-guide" data-testid="checkbox-guide">
+                </label>
+            </div>
+
+            <div class="panel">
+                <h2>Giọng đọc</h2>
+                <p id="voice-status" class="muted" data-testid="text-voice-status">Đang kiểm tra…</p>
+                <button id="btn-voice-test" class="btn-small" data-testid="btn-voice-test">🔊 Nghe thử</button>
+            </div>
+
+            <div class="panel">
+                <h2>Bài học của bố mẹ</h2>
+                <p class="muted">Thêm ảnh tự chụp và ghi âm giọng bố mẹ. Bài mới sẽ hiện trong chủ đề bạn chọn.</p>
+                <button id="btn-add-item" class="btn-small btn-primary" data-testid="btn-add-item">➕ Thêm hình mới</button>
+                <div id="custom-list" class="custom-list" data-testid="list-custom-items"></div>
+            </div>
+
+            <div class="panel">
+                <h2>Giọng đánh vần lớp 1</h2>
+                <p class="muted">Nghe thử từng câu. Câu nào giọng AI đọc chưa chuẩn, bố mẹ bấm 🎙️ để ghi âm giọng mình thay vào. Bấm ↺ để quay lại giọng AI.</p>
+                <select id="l1-voice-lesson" data-testid="select-l1-voice-lesson"></select>
+                <div id="l1-voice-list" class="custom-list" data-testid="list-l1-voices"></div>
+            </div>
+
+            <div class="panel">
+                <h2>Sao lưu</h2>
+                <p class="muted">Chuyển bài của bố mẹ, giọng bố mẹ đã ghi và số hoa sang máy khác (điện thoại ↔ máy tính bảng).</p>
+                <button id="btn-export" class="btn-small" data-testid="btn-export">📤 Xuất file sao lưu</button>
+                <button id="btn-import" class="btn-small" data-testid="btn-import">📥 Nhập file sao lưu</button>
+                <input type="file" id="file-import" accept=".json,application/json" hidden data-testid="input-import">
+            </div>
+
+            <div class="panel">
+                <h2>Vườn hoa</h2>
+                <button id="btn-reset-flowers" class="btn-small btn-danger" data-testid="btn-reset-flowers">Đặt lại số hoa về 0</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CỔNG BỐ MẸ -->
+    <div id="modal-gate" class="modal" hidden data-testid="modal-gate">
+        <div class="modal-box">
+            <h2>Dành cho bố mẹ</h2>
+            <p id="gate-question" class="gate-question"></p>
+            <div id="gate-answers" class="gate-answers"></div>
+            <button class="btn-small" id="btn-gate-cancel" data-testid="btn-gate-cancel">Hủy</button>
+        </div>
+    </div>
+
+    <!-- THÊM / SỬA HÌNH -->
+    <div id="modal-item" class="modal" hidden data-testid="modal-item">
+        <div class="modal-box modal-form">
+            <h2 id="item-modal-title">Thêm hình mới</h2>
+
+            <label>Chủ đề
+                <select id="item-topic" data-testid="select-item-topic"></select>
+            </label>
+            <div id="new-topic-fields" class="new-topic" hidden>
+                <label>Tên chủ đề mới
+                    <input type="text" id="new-topic-name" placeholder="VD: Đồ vật trong nhà" data-testid="input-new-topic-name">
+                </label>
+                <label>Biểu tượng (1 emoji)
+                    <input type="text" id="new-topic-icon" placeholder="VD: 🏠" maxlength="4" data-testid="input-new-topic-icon">
+                </label>
+            </div>
+
+            <div id="item-photo" class="item-photo" data-testid="box-item-photo">Chạm để chọn ảnh</div>
+            <input type="file" id="item-photo-file" accept="image/*" hidden data-testid="input-item-photo">
+
+            <label>Tên (bé sẽ nghe)
+                <input type="text" id="item-name" placeholder="VD: Cái ghế" data-testid="input-item-name">
+            </label>
+            <label>Câu đọc khi học (không bắt buộc)
+                <input type="text" id="item-say" placeholder="VD: Cái ghế. Ghế để ngồi." data-testid="input-item-say">
+            </label>
+
+            <div class="record-box">
+                <span>Giọng bố mẹ (không bắt buộc)</span>
+                <div class="record-buttons">
+                    <button id="btn-record" class="btn-small" data-testid="btn-record">🎙️ Ghi âm</button>
+                    <button id="btn-record-play" class="btn-small" disabled data-testid="btn-record-play">▶ Nghe</button>
+                    <button id="btn-record-clear" class="btn-small" disabled data-testid="btn-record-clear">✖ Xóa</button>
+                </div>
+                <p id="record-status" class="muted"></p>
+            </div>
+
+            <div class="modal-actions">
+                <button id="btn-item-cancel" class="btn-small" data-testid="btn-item-cancel">Hủy</button>
+                <button id="btn-item-save" class="btn-small btn-primary" data-testid="btn-item-save">Lưu</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- HỘP XÁC NHẬN -->
+    <div id="modal-confirm" class="modal" hidden data-testid="modal-confirm">
+        <div class="modal-box">
+            <p id="confirm-text" class="confirm-text"></p>
+            <div class="modal-actions">
+                <button id="btn-confirm-no" class="btn-small" data-testid="btn-confirm-no">Không</button>
+                <button id="btn-confirm-yes" class="btn-small btn-danger" data-testid="btn-confirm-yes">Đồng ý</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PHẦN THƯỞNG -->
+    <div id="reward" class="reward" hidden data-testid="popup-reward">
+        <div id="reward-flower" class="reward-flower">🌸</div>
+        <div id="reward-text" class="reward-text">Giỏi quá!</div>
+    </div>
+    <div id="petals" class="petals" aria-hidden="true"></div>
+
+    <div id="toast" class="toast" data-testid="toast"></div>
+
+    <script src="data.js"></script>
+    <script src="lop1-data.js"></script>
+    <script src="voice-clips.js"></script>
+    <script src="app.js"></script>
+    <script src="parent.js"></script>
+    <script src="lop1.js"></script>
+</body>
+</html>

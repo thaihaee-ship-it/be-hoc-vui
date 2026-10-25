@@ -1,0 +1,89 @@
+/* ---------- Lớp 1: danh sách bài ---------- */
+.l1-lesson-list {
+    flex: 1;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 12px;
+    padding: 8px 4px 24px;
+    align-content: start;
+}
+.l1-lesson {
+    position: relative;
+    min-height: 96px;
+    padding: 12px 14px;
+    border-radius: 20px;
+    background: var(--card);
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 4px;
+    text-align: left;
+    border-left: 8px solid #26A69A;
+    transition: transform 0.1s;
+}
+.l1-lesson:active { transform: scale(0.96); }
+.l1-lesson.is-review { border-left-color: var(--orange); background: #FFF8EC; }
+.l1-lesson.is-done { border-left-color: var(--green); }
+.l1-lesson-no { font-size: 14px; font-weight: 800; color: var(--muted); }
+.l1-lesson-name { font-size: 21px; font-weight: 900; line-height: 1.2; }
+.l1-lesson-mark { position: absolute; top: 8px; right: 10px; font-size: 22px; }
+
+/* ---------- Lớp 1: thẻ học ---------- */
+.l1-card { justify-content: center; gap: 6px; aspect-ratio: auto; height: min(78vh, 560px); width: min(78vw, 560px); }
+.l1-pic { font-size: min(18vw, 14vh, 110px); line-height: 1; min-height: 0; }
+.l1-pic:empty { display: none; }
+.l1-big { font-size: min(20vw, 15vh, 130px); font-weight: 900; line-height: 1.1; color: #3E2C23; text-align: center; }
+.l1-big.is-letter { font-size: min(26vw, 22vh, 180px); color: #26A69A; }
+.l1-big.is-tone { color: #E5533D; width: min(40vw, 30vh, 220px); height: min(40vw, 30vh, 220px); }
+.tone-svg { width: 100%; height: 100%; display: block; }
+.l1-chip .tone-svg { width: 1em; height: 1em; }
+.l1-opt-tone { width: calc(var(--opt) * 0.5); height: calc(var(--opt) * 0.5); }
+.l1-sub { font-size: clamp(20px, 4.5vw, 30px); font-weight: 800; color: var(--muted); }
+.l1-sub:empty { display: none; }
+
+.l1-steps {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 6px;
+}
+.l1-steps:empty { display: none; }
+.l1-chip {
+    min-width: 48px;
+    padding: 6px 12px;
+    border-radius: 14px;
+    background: #F1ECE6;
+    color: #8A7B70;
+    font-size: clamp(22px, 5vw, 34px);
+    font-weight: 900;
+    text-align: center;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.1;
+}
+.l1-chip small { font-size: 13px; font-weight: 700; }
+.l1-chip.lit { background: #E0F2F1; color: #00796B; }
+.l1-chip.now { background: #26A69A; color: #fff; transform: scale(1.15); }
+.l1-chip.kind-dau.now { background: #E5533D; }
+.l1-chip.kind-tieng.now, .l1-chip.kind-tieng.lit { background: var(--orange); color: #fff; }
+.l1-sep { font-size: 22px; font-weight: 900; color: #C9BDB2; }
+.l1-sep.is-gap { width: 100%; height: 0; }
+
+/* ---------- Lớp 1: lựa chọn khi chơi ---------- */
+.option-l1 { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.l1-opt-text { font-size: calc(var(--opt) * 0.3); font-weight: 900; line-height: 1.1; text-align: center; color: #3E2C23; }
+.l1-opt-text.is-long { font-size: calc(var(--opt) * 0.2); }
+.l1-opt-tone { color: #E5533D; }
+.l1-opt-label { font-size: calc(var(--opt) * 0.11); font-weight: 800; color: var(--muted); }
+
+/* ---------- Khu bố mẹ: giọng đánh vần ---------- */
+.l1-voice-row { display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 12px; background: #FAF7F3; }
+.l1-voice-row .custom-sub { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.l1-voice-row .recording { background: #FF6B6B; color: #fff; }

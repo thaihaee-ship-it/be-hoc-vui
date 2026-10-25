@@ -1,0 +1,20 @@
+{
+    "name": "Bé Học Vui",
+    "short_name": "Bé Học Vui",
+    "description": "App học cho bé: con vật, màu sắc, hình khối, số đếm, chữ cái",
+    "lang": "vi",
+    "start_url": ".",
+    "scope": ".",
+    "display": "standalone",
+    "orientation": "any",
+    "background_color": "#FFF6E0",
+    "theme_color": "#FFB74D",
+    "icons": [
+        {
+            "src": "icon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "any"
+        }
+    ]
+}
